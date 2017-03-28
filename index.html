@@ -13,7 +13,7 @@
 
     <script>
         function parse_imgur(url) {
-          var regExp = RegExp("imgur\.com\/(?:gallery/|a/)?([a-zA-Z0-9]{5,7}(?:\.|$))", "i");
+          var regExp = RegExp("imgur\.com\/(?:gallery/|a/)?([a-zA-Z0-9]{5,7})(?:\.|$)", "i");
           var id = regExp.exec(url);
           if (id) {
               return id[1];
@@ -30,7 +30,7 @@
             data.data.children.slice(0, 10),
             function (i, post) {
               var imgur = parse_imgur(post.data.url);
-              var url = imgur ? 'https://i.imgur.com/' + imgur : post.data.url;
+              var url = imgur ? 'https://i.imgur.com/' + imgur +'.png' : post.data.url;
               var img = $('<img class="imgpost">'); 
               img.attr('src', url);
               
