@@ -12,6 +12,16 @@
     </div>
 
     <script>
+        function parse_imgur(url) {
+          var regExp = RegExp("imgur\.com\/(?:gallery/|a/)?([a-zA-Z0-9]{5,7}(?:\.|$))", "i");
+          var id = regExp.exec(url);
+          if (id) {
+              return id[1];
+          } else {
+              return null;
+          }
+      }
+
       $.getJSON(
         "https://www.reddit.com/r/DeepFriedMemes/top.json?t=day&jsonp=?",
         function foo(data)
@@ -19,9 +29,13 @@
           $.each(
             data.data.children.slice(0, 10),
             function (i, post) {
-              var img = $('<img id="dynamic">'); //Equivalent: $(document.createElement('img'))
-            img.attr('src', post.data.url);
-            img.appendTo('#reddit-content');
+              var imgur = parse_imgur(post.data.url);
+              var url = imgur ? 'https://i.imgur.com/' + imgur : post.data.url;
+              var img = $('<img class="imgpost">'); 
+              img.attr('src', url);
+              
+              
+              img.appendTo('#reddit-content');
               $("#reddit-content").append( '<br>' + post.data.title );
               $("#reddit-content").append( '<br>' + post.data.permalink );
               $("#reddit-content").append( '<hr>' );
