@@ -19,11 +19,11 @@
           $.each(
             data.data.children.slice(0, 10),
             function (i, post) {
+              var img = $('<img id="dynamic">'); //Equivalent: $(document.createElement('img'))
+            img.attr('src', post.data.url);
+            img.appendTo('#reddit-content');
               $("#reddit-content").append( '<br>' + post.data.title );
-              $("#reddit-content").append( '<br>' + post.data.url );
               $("#reddit-content").append( '<br>' + post.data.permalink );
-              $("#reddit-content").append( '<br>' + post.data.ups );
-              $("#reddit-content").append( '<br>' + post.data.downs );
               $("#reddit-content").append( '<hr>' );
 
             }
