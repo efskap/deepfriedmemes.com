@@ -58,23 +58,23 @@
     
 
                <div class="slider">
-            <span>jpeg iterations (<span class="FilterValue jpeg-val">3</span>) </span> 
+            <span>jpeg iterations (<span class="FilterValue jpeg-val"></span>) </span> 
 
             <div class="setting">
-              <input id="jpeg_times" type="range" min="0" max="200" step="1" value="3" >
+              <input id="jpeg_times" type="range" min="0" max="200" step="1" value="28" >
          
             </div>
           </div>
         <div class="slider">
-            <span>jpeg quality (<span class="FilterValue jpeg-val">0.5</span>) </span> 
+            <span>jpeg quality (<span class="FilterValue jpeg-val"></span>) </span> 
 
             <div class="setting">
-              <input id="jpeg_quality" type="range" min="0" max="1" step="0.1" value="0.5" >
+              <input id="jpeg_quality" type="range" min="0" max="1" step="0.1" value="0.2" >
          
             </div>
           </div>
                <div class="Filter slider">
-            <span>brightness (<span class="FilterValue">0</span>) </span> 
+            <span>brightness (<span class="FilterValue"></span>) </span> 
 
             <div class="FilterSetting">
               <input type="range" min="-10" max="30" step="1" value="0" data-filter="brightness">
@@ -82,21 +82,21 @@
             </div>
           </div>
           <div class="Filter slider">
-            <span>contrast (<span class="FilterValue">0</span>) </span> 
+            <span>contrast (<span class="FilterValue"></span>) </span> 
             <div class="FilterSetting">
-              <input type="range" min="0" max="300" step="1" value="0" data-filter="contrast">
+              <input type="range" min="0" max="300" step="1" value="30" data-filter="contrast">
              
             </div>
           </div>
           <div class="Filter slider">
-            <span>sharpen (<span class="FilterValue">0</span>) </span> 
+            <span>sharpen (<span class="FilterValue"></span>) </span> 
             <div class="FilterSetting">
-              <input type="range" min="0" max="800" step="1" value="0" data-filter="sharpen">
+              <input type="range" min="0" max="800" step="1" value="10" data-filter="sharpen">
 
             </div>
           </div>
           <div class="Filter slider">
-           <span>saturation (<span class="FilterValue">0</span>) </span> 
+           <span>saturation (<span class="FilterValue"></span>) </span> 
             <div class="FilterSetting">
               <input type="range" min="0" max="300" step="1" value="0" data-filter="saturation">
        
@@ -108,6 +108,9 @@
       </div>
 
     </div>
+     <div class="row">
+       <span id="statustext"></span>
+     </div>
     <div class="row">
       <div class="column">
         <canvas id="canvas"></canvas>

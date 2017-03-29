@@ -12,6 +12,16 @@
 .slider.faded{
     color:#888;
 }
+#canvas {
+    border: 5px transparent solid;
+}
+#canvas.proc{
+    border: 5px darkred solid;
+}
+#statustext{
+    color:#888;
+  
+}
 #title{
     font-weight: bold;
     color:#336;
