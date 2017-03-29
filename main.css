@@ -48,6 +48,9 @@
 .community-links a{
         text-decoration: none;
 }
+.community-links a:hover{
+        text-decoration: underline;
+}
 body{
     font-family: "Cabin",  "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
