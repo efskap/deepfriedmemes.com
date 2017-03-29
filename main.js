@@ -32,7 +32,6 @@ Zepto(function ($) {
         if(revert)
             cam.revert(false);
         $.each(b, function(j,i){ 
-            j = b.length - j;
             var k = b[j];
             k = parseFloat(k,10);
             if (k !== 0) {
