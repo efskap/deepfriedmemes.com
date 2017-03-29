@@ -1,0 +1,37 @@
+#Filters{
+    display: none;
+
+}
+.Filter{
+    display:inline-block;
+    margin: 1em 1em;
+}
+#title{
+    font-weight: bold;
+    color:#336;
+    font-size: 36pt;
+}
+#subtitle{
+    color:#CCD;
+}
+.container{
+      text-align: center;
+          font-weight: bold;
+    font-size: 15pt;
+}
+#canvas{
+    margin-top:2em;
+}
+
+.community-links li{
+    font-size:16pt;
+    list-style: none;
+    display: inline;
+    margin: 0.5em 1em;
+}
+.community-links a{
+        text-decoration: none;
+}
+body{
+    font-family: "Cabin",  "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}

@@ -1,67 +1,107 @@
 <!DOCTYPE html>
+<html lang="en">
 
+<head>
 
-<html>
-  <head>
-    <script src="http://zeptojs.com/zepto.min.js"></script>
-    <title>Deep Fried Memes</title>
- <style>
-#reddit-content:{
-text-align:center;
-}
-.imgpost{
-max-width:800px;
-	display:block;
-		margin:4em auto;
-}
-	  #source{
-	      float: right;
-    color: #CCC;
-	  }
- </style>
-  </head>
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Deep Fried Memes</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-  <body>
-	  <span id="source">[sourced from /r/DeepFriedMemes]</span>
-    <div id="reddit-content">
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Cabin:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="main.css">
+  <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+  <script src="https://use.fontawesome.com/0bc71bd5fc.js"></script>
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+</head>
+
+<body>
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container" style="margin-top: 5%">
+    <div class="row">
+      <div class="column">
+        <ul class="community-links">
+          <li><a href="https://www.reddit.com/r/deepfriedmemes">/r/deepfriedmemes</a></li>
+          <li><a href="https://discord.gg/Y3TYrG3">Discord</a></li>
+        </ul>
+      </div>
+    </div>
+        <!--<span id="subtitle">jpeg artifacting coming later</span>-->
+
+    <h3 id="title"><i class="em em-100"></i> <i class="em em-joy"></i> Meme Deep Fryer <i class="em em-joy"></i><i class="em em-ok_hand"></i></h3>
+
+    <div class="row">
+         <input type="file" id="imageLoader" name="imageLoader" />
+    </div>
+      <div class="row">
+      <div class="column">
+        <div id="Filters">
+          <div class="Filter">
+            <span>contrast (<span class="FilterValue">0</span>) </span> 
+            <div class="FilterSetting">
+              <input type="range" min="0" max="300" step="1" value="0" data-filter="contrast">
+             
+            </div>
+          </div>
+          <div class="Filter">
+            <span>sharpen (<span class="FilterValue">0</span>) </span> 
+            <div class="FilterSetting">
+              <input type="range" min="0" max="800" step="1" value="0" data-filter="sharpen">
+
+            </div>
+          </div>
+          <div class="Filter">
+           <span>saturation (<span class="FilterValue">0</span>) </span> 
+            <div class="FilterSetting">
+              <input type="range" min="0" max="300" step="1" value="0" data-filter="saturation">
+       
+            </div>
+          </div>
+          <div class="Filter">
+            <span>brightness (<span class="FilterValue">0</span>) </span> 
+
+            <div class="FilterSetting">
+              <input type="range" min="-10" max="30" step="1" value="0" data-filter="brightness">
+         
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="column">
+        <canvas id="canvas"></canvas>
+      </div>
     </div>
 
-    <script>
-        function parse_imgur(url) {
-          var regExp = RegExp("imgur\.com\/(?:gallery/|a/)?([a-zA-Z0-9]{5,7})(?:\.|$)", "i");
-          var id = regExp.exec(url);
-          if (id) {
-              return id[1];
-          } else {
-              return null;
-          }
-      }
+  </div>
+        </div>
 
-      $.getJSON(
-        "https://www.reddit.com/r/DeepFriedMemes/top.json?t=day&jsonp=?",
-        function foo(data)
-        {
-          $.each(
-            data.data.children,
-            function (i, post) {
-              var imgur = parse_imgur(post.data.url);
-              var url = imgur ? 'https://i.imgur.com/' + imgur +'.png' : post.data.url;
-              var img = $('<img class="imgpost">'); 
-              img.attr('src', url);
-		    var a = $('<a class="link"/>');
-		    a.attr('href','https://reddit.com'+post.data.permalink);
-              
-              img.appendTo(a);
-		    a.appendTo('#reddit-content');
-           //   $("#reddit-content").append( '<br>' + post.data.title );
-           //   $("#reddit-content").append( '<br>' + post.data.permalink );
-            //  $("#reddit-content").append( '<hr>' );
+  <!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/camanjs/4.1.2/caman.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+  <script src="main.js"></script>
+</body>
 
-            }
-          )
-        }
-      );
-    </script>
-
-  </body>
 </html>
