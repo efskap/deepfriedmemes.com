@@ -6,11 +6,14 @@ body{
 }
 .slider{
     display:inline-block;
-    margin: 1em 2%;
+    margin: 1em 1.5%;
     color:#333;
+    min-width:33%;
+    width:15em; 
+    max-width: 100%;
 }
 .slider input{
-  width:200px;
+width: 100%;
 }
 .slider.faded{
     color:#BBB;
@@ -65,7 +68,7 @@ input[type=file] {
   -webkit-box-sizing: border-box;
  
  height: 2em;
-  
+      max-width: 100%;
     text-align: center;
 }
 
@@ -108,4 +111,19 @@ x::-webkit-file-upload-button, input[type=file] {
 x::-webkit-file-upload-button, input[type=file]:hover {
      border: 2px solid #0a5bb7;
      color: #0a5bb7;
+}
+
+
+.slider .rangeslider__handle {
+    height: 20px;
+    width: 20px;
+    margin-top: 5px;
+}
+.slider .rangeslider--horizontal{
+    margin-top: 0.5em;
+    height: 10px;
+}
+.slider .rangeslider__fill {
+    background: #1EAEDB;
+    position: absolute;
 }

@@ -1,6 +1,13 @@
 'use strict';
 
-Zepto(function ($) {
+jQuery(function ($) {
+    //if (/Mobi/.test(navigator.userAgent)) {
+    if (true){
+    $('input[type="range"]').rangeslider({
+           polyfill: false
+    });
+    }
+
     var imageLoader = $('#imageLoader');
     var canvas = $('#canvas')[0];
     var ctx = canvas.getContext('2d');
