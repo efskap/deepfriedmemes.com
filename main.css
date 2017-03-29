@@ -2,9 +2,15 @@
     display: none;
 
 }
-.Filter{
+.slider{
     display:inline-block;
-    margin: 1em 1em;
+    margin: 1em 2%; 
+}
+.slider input{
+  width:200px;
+}
+.slider.faded{
+    color:#888;
 }
 #title{
     font-weight: bold;
