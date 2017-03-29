@@ -45,7 +45,6 @@ Zepto(function ($) {
         var jpeg_times = parseInt($('#jpeg_times').val());
         var jpeg_quality = parseFloat($('#jpeg_quality').val());
 
-        $('#jpeg_times').parent().parent().toggleClass('faded', jpeg_times === 0);
         $('#jpeg_quality').parent().parent().toggleClass('faded', jpeg_times === 0);
         var img = new Image();
 

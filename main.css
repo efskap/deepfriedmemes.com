@@ -1,16 +1,19 @@
 #Filters{
     display: none;
-
+}
+body{
+    background-color: #EEE;
 }
 .slider{
     display:inline-block;
-    margin: 1em 2%; 
+    margin: 1em 2%;
+    color:#333;
 }
 .slider input{
   width:200px;
 }
 .slider.faded{
-    color:#888;
+    color:#BBB;
 }
 #canvas {
     border: 5px transparent solid;
@@ -19,7 +22,7 @@
     border: 5px darkred solid;
 }
 #statustext{
-    color:#888;
+    color:#333;
   
 }
 #title{
@@ -49,7 +52,8 @@
         text-decoration: none;
 }
 .community-links a:hover{
-        text-decoration: underline;
+        
+         color: #0a5bb7;
 }
 body{
     font-family: "Cabin",  "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -85,7 +89,7 @@ x::-webkit-file-upload-button, input[type=file] {
       display: inline-block;
     height: 2em;
  
-    color: #0a5bb7;
+    color: #1EAEDB;
     text-align: center;
     font-size: 1.2em;
     font-weight: 600;
@@ -96,12 +100,12 @@ x::-webkit-file-upload-button, input[type=file] {
     white-space: nowrap;
     background-color: transparent;
     border-radius: 4px;
-    border: 2px solid #0a5bb7;
+    border: 2px solid #1EAEDB;
     cursor: pointer;
     box-sizing: border-box;
     
     }
 x::-webkit-file-upload-button, input[type=file]:hover {
-     border: 2px solid #1EAEDB;
-     color: #1EAEDB;
+     border: 2px solid #0a5bb7;
+     color: #0a5bb7;
 }
