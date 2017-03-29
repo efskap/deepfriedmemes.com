@@ -61,7 +61,7 @@ jQuery(function ($) {
             if (jpeg_counter > 0) {
                 $('#statustext').html('<i class="em em-sparkles"></i>&nbsp; JPEGing - ' + (jpeg_times - jpeg_counter) + '/' + jpeg_times);
                 jpeg_counter--;
-                img.src = canvas.toDataURL("image/jpeg", jpeg_quality + Math.random() * 0.1 - 0.05);
+                img.src = canvas.toDataURL("image/jpeg", Math.max(0,jpeg_quality + Math.sin(jpeg_counter) * 0.05 - 0.025));
             } else {
                 $('#statustext').html('<i class="em em-art"></i>&nbsp; applying filters');
                 cam.reloadCanvasData();
