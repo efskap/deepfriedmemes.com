@@ -70,7 +70,8 @@ input[type=file]::-webkit-file-upload-button {
   margin: 0;
   padding: 0;
   -webkit-appearance: none;
-  width: 0;
+  width: 4px;
+  visibility: hidden;
 }
 
 /* "x::-webkit-file-upload-button" forces the rules to only apply to browsers that support this pseudo-element */
@@ -98,7 +99,8 @@ x::-webkit-file-upload-button, input[type=file] {
     border: 2px solid #0a5bb7;
     cursor: pointer;
     box-sizing: border-box;
-}
+    
+    }
 x::-webkit-file-upload-button, input[type=file]:hover {
      border: 2px solid #1EAEDB;
      color: #1EAEDB;
