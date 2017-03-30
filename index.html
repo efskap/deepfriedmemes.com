@@ -35,7 +35,7 @@
     <div id="wrapper">
         <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-        <div class="container" style="padding: 5%">
+        <div class="container" style="padding: 2em;">
             <div class="row">
                 <div class="column">
                     <ul class="community-links">
@@ -48,16 +48,16 @@
             </div>
             <!--<span id="subtitle">jpeg artifacting coming later</span>-->
 
-            <h3 id="title"><i class="em em-100"></i> <i class="em em-joy"></i> Meme Deep Fryer <i class="em em-joy"></i><i class="em em-ok_hand"></i></h3>
+            <h3 id="title"><i class="em em-100"></i><i class="em em-joy"></i> Meme Deep Fryer <i class="em em-joy"></i><i class="em em-ok_hand"></i></h3>
 
             <div class="row">
                 <input class="" type="file" id="imageLoader" name="imageLoader" />
             </div>
             <div class="row">
                 <div class="column">
-                    <div id="Filters">
+                    <div id="Filters" class="noselect">
                         <div class="slider">
-                            <span>jpeg iterations (<span class="FilterValue jpeg-val"></span>) </span>
+                            <span>jpeg repetitions (<span class="FilterValue jpeg-val"></span>) </span>
 
                             <div class="setting">
                                 <input id="jpeg_times" type="range" min="0" max="200" step="1" value="28">
@@ -107,14 +107,14 @@
 
             </div>
             <div class="row">
-                <span id="statustext"></span>
+                <span id="statustext" class="noselect"></span>
             </div>
             <div class="row">
                 <div class="column">
                     <canvas id="canvas"></canvas>
                 </div>
             </div>
-            <a class="button" id="dl-btn">Download</a>
+            <a class="button noselect" id="dl-btn">Download</a>
         </div>
     </div>
 
