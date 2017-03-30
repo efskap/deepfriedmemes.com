@@ -32,103 +32,106 @@
 </head>
 
 <body>
-
-  <!-- Primary Page Layout
+  <div id="wrapper">
+    <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <div class="container" style="margin-top: 5%">
-    <div class="row">
-      <div class="column">
-        <ul class="community-links">
-          <li><a href="https://www.reddit.com/r/deepfriedmemes">/r/deepfriedmemes</a></li>
-          <li><a href="https://discord.gg/Y3TYrG3">Discord</a></li>
-        </ul>
-      </div>
-    </div>
-        <!--<span id="subtitle">jpeg artifacting coming later</span>-->
-
-    <h3 id="title"><i class="em em-100"></i> <i class="em em-joy"></i> Meme Deep Fryer <i class="em em-joy"></i><i class="em em-ok_hand"></i></h3>
-
-    <div class="row">
-         <input class="" type="file" id="imageLoader" name="imageLoader" />
-    </div>
+    <div class="container" style="padding-top: 5%">
       <div class="row">
-      <div class="column">
-        <div id="Filters">
+        <div class="column">
+          <ul class="community-links">
+            <li><a href="https://www.reddit.com/r/deepfriedmemes">/r/deepfriedmemes</a></li>
+            <li><a href="https://discord.gg/Y3TYrG3">Discord</a></li>
+          </ul>
+        </div>
+      </div>
+      <!--<span id="subtitle">jpeg artifacting coming later</span>-->
 
-    
+      <h3 id="title"><i class="em em-100"></i> <i class="em em-joy"></i> Meme Deep Fryer <i class="em em-joy"></i><i class="em em-ok_hand"></i></h3>
 
-               <div class="slider">
-            <span>jpeg iterations (<span class="FilterValue jpeg-val"></span>) </span> 
+      <div class="row">
+        <input class="" type="file" id="imageLoader" name="imageLoader" />
+      </div>
+      <div class="row">
+        <div class="column">
+          <div id="Filters">
 
-            <div class="setting">
-              <input id="jpeg_times" type="range" min="0" max="200" step="1" value="28" >
-         
-            </div>
-          </div>
-        <div class="slider">
-            <span>jpeg quality (<span class="FilterValue jpeg-val"></span>) </span> 
 
-            <div class="setting">
-              <input id="jpeg_quality" type="range" min="0" max="1" step="0.1" value="0.2" >
-         
-            </div>
-          </div>
-               <div class="Filter slider">
-            <span>brightness (<span class="FilterValue"></span>) </span> 
 
-            <div class="FilterSetting">
-              <input type="range" min="-10" max="30" step="1" value="0" data-filter="brightness">
-         
-            </div>
-          </div>
-          <div class="Filter slider">
-            <span>contrast (<span class="FilterValue"></span>) </span> 
-            <div class="FilterSetting">
-              <input type="range" min="0" max="300" step="1" value="30" data-filter="contrast">
-             
-            </div>
-          </div>
-          <div class="Filter slider">
-            <span>sharpen (<span class="FilterValue"></span>) </span> 
-            <div class="FilterSetting">
-              <input type="range" min="0" max="800" step="1" value="10" data-filter="sharpen">
+            <div class="slider">
+              <span>jpeg iterations (<span class="FilterValue jpeg-val"></span>) </span>
 
+              <div class="setting">
+                <input id="jpeg_times" type="range" min="0" max="200" step="1" value="28">
+
+              </div>
             </div>
-          </div>
-          <div class="Filter slider">
-           <span>saturation (<span class="FilterValue"></span>) </span> 
-            <div class="FilterSetting">
-              <input type="range" min="0" max="300" step="1" value="0" data-filter="saturation">
-       
+            <div class="slider">
+              <span>jpeg quality (<span class="FilterValue jpeg-val"></span>) </span>
+
+              <div class="setting">
+                <input id="jpeg_quality" type="range" min="0" max="1" step="0.1" value="0.2">
+
+              </div>
             </div>
+            <div class="Filter slider">
+              <span>brightness (<span class="FilterValue"></span>) </span>
+
+              <div class="FilterSetting">
+                <input type="range" min="-10" max="30" step="1" value="0" data-filter="brightness">
+
+              </div>
+            </div>
+            <div class="Filter slider">
+              <span>contrast (<span class="FilterValue"></span>) </span>
+              <div class="FilterSetting">
+                <input type="range" min="0" max="300" step="1" value="30" data-filter="contrast">
+
+              </div>
+            </div>
+            <div class="Filter slider">
+              <span>sharpen (<span class="FilterValue"></span>) </span>
+              <div class="FilterSetting">
+                <input type="range" min="0" max="800" step="1" value="10" data-filter="sharpen">
+
+              </div>
+            </div>
+            <div class="Filter slider">
+              <span>saturation (<span class="FilterValue"></span>) </span>
+              <div class="FilterSetting">
+                <input type="range" min="0" max="300" step="1" value="0" data-filter="saturation">
+
+              </div>
+            </div>
+
           </div>
-     
+
         </div>
 
       </div>
-
-    </div>
-     <div class="row">
-       <span id="statustext"></span>
-     </div>
-    <div class="row">
-      <div class="column">
-        <canvas id="canvas"></canvas>
+      <div class="row">
+        <span id="statustext"></span>
       </div>
+      <div class="row">
+        <div class="column">
+          <canvas id="canvas"></canvas>
+        </div>
+      </div>
+      <a class="button" id="dl-btn">Download</a>
     </div>
-  <a class="button" id="dl-btn" disabled>Download</a>
   </div>
-
-        </div>
+  </div>
+    <div id="footer">
+        <span>Built by <a href="https://dmitry.lol">Dmitry</a>.</span>
+    </div>
 
   <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/camanjs/4.1.2/caman.full.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.slim.min.js"></script> 
- <script src="main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.slim.min.js"></script>
+  <script src="main.js"></script>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.0/rangeslider.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.0/rangeslider.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.0/rangeslider.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.0/rangeslider.min.js"></script>
 </body>
 
 </html>

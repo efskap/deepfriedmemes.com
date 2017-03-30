@@ -54,10 +54,10 @@ width: 100%;
     display: inline;
     margin: 0.5em 1em;
 }
-.community-links a{
+a{
         text-decoration: none;
 }
-.community-links a:hover{
+a:hover{
         
          color: #0a5bb7;
 }
@@ -129,4 +129,40 @@ x::-webkit-file-upload-button, input[type=file]:hover {
 .slider .rangeslider__fill {
     background: #1EAEDB;
     position: absolute;
+}
+
+
+/*  
+Sticky Footer Solution
+by Steve Hatcher
+http://stever.ca http://www.cssstickyfooter.com
+*/
+
+html, body, #wrapper {height: 100%;}
+
+body > #wrapper { height: auto; min-height: 100%; }
+
+/* must be same height as the footer */
+#content { overflow: auto; padding-bottom: 150px; } 
+
+#footer {
+     position: relative;
+    margin-top: -1.7em;
+    height: 1.7em;
+    clear: both;
+    background: #ccc;
+    color: #777;
+    font-weight: 800;
+    line-height: 1.7;
+    padding: 0 0.7em;
+    text-align: right;
+} 
+
+/*Opera Fix*/
+body:before { /* thanks to Maleika (Kohoutec)*/
+    content: "";
+    height:100%;
+    float: left;
+    width: 0;
+    margin-top: -32767px; /* thank you Erik J */
 }
