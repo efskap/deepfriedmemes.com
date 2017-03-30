@@ -4,6 +4,9 @@
 body{
     background-color: #EEE;
 }
+#dl-btn{
+   visibility: hidden;
+}
 .slider{
     display:inline-block;
     margin: 1em 1.5%;
@@ -22,7 +25,7 @@ width: 100%;
     border: 5px transparent solid;
 }
 #canvas.proc{
-    border: 5px darkred solid;
+    border: 5px indianred solid;
 }
 #statustext{
     color:#333;

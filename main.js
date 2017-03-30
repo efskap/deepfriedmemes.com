@@ -7,7 +7,9 @@ jQuery(function ($) {
            polyfill: false
     });
     }
-
+    $('#dl-btn').on('click', function(){
+        downloadCanvas(this, 'canvas', 'deepfriedmeme.png');
+    });
     var imageLoader = $('#imageLoader');
     var canvas = $('#canvas')[0];
     var ctx = canvas.getContext('2d');
@@ -26,7 +28,7 @@ jQuery(function ($) {
                 ctx.drawImage(img, 0, 0);
                 original_img = canvas.toDataURL();
                 $('#Filters').show();
-
+                $('#dl-btn').css({'display':'inline-block'});
                 cam = Caman(canvas);
                 $(".slider input").each(function () {
 
@@ -47,7 +49,7 @@ jQuery(function ($) {
 
     function rerender(revert) {
         $('#canvas').toggleClass('proc', true);
-
+        $('#dl-btn').css({'visibility':'hidden'});
 
         var jpeg_times = parseInt($('#jpeg_times').val());
         var jpeg_quality = parseFloat($('#jpeg_quality').val());
@@ -75,6 +77,7 @@ jQuery(function ($) {
                 cam.render(function(){
                     $('#statustext').html('<i class="em em-ok_hand"></i>');
                     $('#canvas').toggleClass('proc', false);
+                    $('#dl-btn').css({'visibility':'visible'});
                 });
                
                 return;
@@ -101,3 +104,9 @@ jQuery(function ($) {
         rerender(true);
     });
 });
+
+// https://jsfiddle.net/AbdiasSoftware/7PRNN/
+function downloadCanvas(link, canvasId, filename) {
+    link.href = document.getElementById(canvasId).toDataURL();
+    link.download = filename;
+}
