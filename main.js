@@ -1,14 +1,14 @@
 'use strict';
 
-jQuery(function ($) {
+jQuery(function($) {
     //if (/Mobi/.test(navigator.userAgent)) {
-    if (true){
-    $('input[type="range"]').rangeslider({
-           polyfill: false
-    });
+    if (true) {
+        $('input[type="range"]').rangeslider({
+            polyfill: false
+        });
     }
-    $('#dl-btn').on('click', function(){
-        downloadCanvas(this, 'canvas', 'deepfriedmeme.png');
+    $('#dl-btn').on('click', function() {
+        downloadCanvas(this, 'canvas', 'deepfried_' + Math.floor(Date.now()) + '.png');
     });
     var imageLoader = $('#imageLoader');
     var canvas = $('#canvas')[0];
@@ -19,18 +19,17 @@ jQuery(function ($) {
 
     function loadImage(e) {
         var reader = new FileReader();
-        reader.onload = function (event) {
+        reader.onload = function(event) {
             var img = new Image();
-            img.onload = function () {
+            img.onload = function() {
                 canvas.width = img.width;
                 canvas.height = img.height;
                 canvas.removeAttribute("data-caman-id");
                 ctx.drawImage(img, 0, 0);
                 original_img = canvas.toDataURL();
                 $('#Filters').show();
-                $('#dl-btn').css({'display':'inline-block'});
                 cam = Caman(canvas);
-                $(".slider input").each(function () {
+                $(".slider input").each(function() {
 
                     $(this).parent().parent().find(".FilterValue").html($(this).val());
                 });
@@ -49,7 +48,9 @@ jQuery(function ($) {
 
     function rerender(revert) {
         $('#canvas').toggleClass('proc', true);
-        $('#dl-btn').css({'visibility':'hidden'});
+        $('#dl-btn').css({
+            'visibility': 'hidden'
+        });
 
         var jpeg_times = parseInt($('#jpeg_times').val());
         var jpeg_quality = parseFloat($('#jpeg_quality').val());
@@ -58,28 +59,30 @@ jQuery(function ($) {
         var img = new Image();
 
         var jpeg_counter = jpeg_times;
-        var jpegize = function () {
+        var jpegize = function() {
             ctx.drawImage(img, 0, 0);
             if (jpeg_counter > 0) {
                 $('#statustext').html('<i class="em em-sparkles"></i>&nbsp; JPEGing - ' + (jpeg_times - jpeg_counter) + '/' + jpeg_times);
                 jpeg_counter--;
-                img.src = canvas.toDataURL("image/jpeg", Math.max(0,jpeg_quality + Math.sin(jpeg_counter) * 0.05 - 0.025));
+                img.src = canvas.toDataURL("image/jpeg", Math.max(0, jpeg_quality + Math.sin(jpeg_counter) * 0.05 - 0.025));
             } else {
                 $('#statustext').html('<i class="em em-art"></i>&nbsp; applying filters');
                 cam.reloadCanvasData();
-                $.each(b, function (j, i) {
+                $.each(b, function(j, i) {
                     var k = b[j];
                     k = parseFloat(k, 10);
                     if (k !== 0) {
                         cam[j](k);
                     }
                 });
-                cam.render(function(){
+                cam.render(function() {
                     $('#statustext').html('<i class="em em-ok_hand"></i>');
                     $('#canvas').toggleClass('proc', false);
-                    $('#dl-btn').css({'visibility':'visible'});
+                    $('#dl-btn').css({
+                        'visibility': 'visible'
+                    });
                 });
-               
+
                 return;
             }
         };
@@ -89,12 +92,12 @@ jQuery(function ($) {
 
     }
 
-    $(".FilterSetting input").each(function () {
+    $(".FilterSetting input").each(function() {
         var j;
         j = $(this).data("filter");
         return b[j] = $(this).val()
     });
-    $("#Filters").on("change", ".slider input", function () {
+    $("#Filters").on("change", ".slider input", function() {
         var j, k;
         j = $(this).data("filter");
         k = $(this).val();
