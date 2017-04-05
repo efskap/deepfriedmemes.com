@@ -3,6 +3,7 @@
 }
 body{
     background-color: #EEE;
+    color: #333;
 }
 #dl-btn{
    visibility: hidden;
@@ -20,6 +21,50 @@ width: 100%;
 }
 .slider.faded{
     color:#BBB;
+} 
+
+
+
+.togglegroup input {
+     display: none; 
+}
+.togglegroup input+span {
+   color:#555;
+   padding: 0.1em 0.3em;
+   cursor:pointer;
+   border: 1px solid #CCC ;
+     border-radius: 4px;
+}
+/*.togglegroup input:checked+span::after {
+ content: ")";
+}
+.togglegroup input:checked+span::before {
+ content: "(";
+}*/
+.togglegroup input:checked+span {
+   border: 1px solid transparent ;
+
+  background-color:#1EAEDB;
+  color:#EEE;
+}
+.togglegroup input+span:hover{
+  color:#333;
+}
+.togglegroup input:checked+span:hover{
+  color:#FFF;
+}
+.togglegroup {
+       margin: 1em 1.5%;
+    display: inline-block;
+        width: 15em;
+ 
+    position: relative;
+}
+
+.togglegroup>label, .togglegroup>span {
+    display: inline-block;
+    position:relative;
+    top:1.2em;
 }
 #canvas {
     border: 5px transparent solid;

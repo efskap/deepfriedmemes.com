@@ -44,7 +44,8 @@
                         <li><a href="https://discord.gg/Y3TYrG3">Discord</a>
                         </li>
                         <li>
-                          <a class="tooltip tooltip-bottom" data-tooltip="Deep Fried Memes are a style of meme wherein an image is run through dozens of filters to the point where the image appears grainy, washed-out, and strangely colored.    -- Know Your Meme" href="#">(What is this?)</a>
+                            <a class="tooltip tooltip-bottom" data-tooltip="Deep Fried Memes are a style of meme wherein an image is run through dozens of filters to the point where the image appears grainy, washed-out, and strangely colored.    -- Know Your Meme"
+                                href="#">(What is this?)</a>
                         </li>
                     </ul>
                 </div>
@@ -58,22 +59,9 @@
             </div>
             <div class="row">
                 <div class="column">
+
                     <div id="Filters" class="noselect">
-                        <div class="slider">
-                            <span>jpeg repetitions (<span class="FilterValue jpeg-val"></span>) </span>
 
-                            <div class="setting">
-                                <input id="jpeg_times" type="range" min="0" max="200" step="1" value="28">
-
-                            </div>
-                        </div>
-                        <div class="slider">
-                            <span>jpeg quality (<span class="FilterValue jpeg-val"></span>) </span>
-
-                            <div class="setting">
-                                <input id="jpeg_quality" type="range" min="0" max="1" step="0.1" value="0.2">
-                            </div>
-                        </div>
                         <div class="Filter slider">
                             <span>brightness (<span class="FilterValue"></span>) </span>
 
@@ -103,7 +91,37 @@
 
                             </div>
                         </div>
+                        <div class="Filter slider">
+                            <span>noise (<span class="FilterValue"></span>) </span>
+                            <div class="FilterSetting">
+                                <input type="range" min="0" max="100" step="1" value="0" data-filter="noise">
 
+                            </div>
+                        </div>
+
+                        <div class="togglegroup">
+                            <span>jpeg</span>
+                            <label><input id="jpeg-before" type="checkbox"/><span>before</span></label>
+                            <label><input id="jpeg-after" type="checkbox" checked/><span>after</span></label>
+                            <span>filters</span>
+                        </div>
+                        <div id="jpeg_opts">
+                            <div class="slider">
+                                <span>jpeg repetitions (<span class="FilterValue jpeg-val"></span>) </span>
+
+                                <div class="setting">
+                                    <input id="jpeg_times" type="range" min="1" max="200" step="1" value="28">
+
+                                </div>
+                            </div>
+                            <div class="slider">
+                                <span>jpeg quality (<span class="FilterValue jpeg-val"></span>) </span>
+
+                                <div class="setting">
+                                    <input id="jpeg_quality" type="range" min="0" max="1" step="0.1" value="0.2">
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
