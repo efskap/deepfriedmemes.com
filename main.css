@@ -114,7 +114,7 @@ input[type=file] {
 
   -webkit-appearance: textfield;
   -webkit-box-sizing: border-box;
- 
+ display: none;
  height: 2em;
       max-width: 100%;
     text-align: center;
@@ -130,15 +130,15 @@ input[type=file]::-webkit-file-upload-button {
 }
 
 /* "x::-webkit-file-upload-button" forces the rules to only apply to browsers that support this pseudo-element */
-x::-webkit-file-upload-button, input[type=file] {
+x::-webkit-file-upload-button, input[type=file]+label {
 
 
 
   margin-left:3px;
-  padding: 0.45em 8px 2px;
+  padding: 0.45em;
  
       display: inline-block;
-    height: 2em;
+
  
     color: #1EAEDB;
     text-align: center;
@@ -146,7 +146,7 @@ x::-webkit-file-upload-button, input[type=file] {
     font-weight: 600;
     line-height: 1.8em;
     letter-spacing: .1rem;
-    text-transform: uppercase;
+
     text-decoration: none;
     white-space: nowrap;
     background-color: transparent;
@@ -156,7 +156,7 @@ x::-webkit-file-upload-button, input[type=file] {
     box-sizing: border-box;
     
     }
-x::-webkit-file-upload-button, input[type=file]:hover {
+x::-webkit-file-upload-button, input[type=file]+label:hover {
      border: 2px solid #0a5bb7;
      color: #0a5bb7;
 }
