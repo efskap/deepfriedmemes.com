@@ -130,7 +130,7 @@ input[type=file]::-webkit-file-upload-button {
 }
 
 /* "x::-webkit-file-upload-button" forces the rules to only apply to browsers that support this pseudo-element */
-x::-webkit-file-upload-button, input[type=file]+label {
+/* x::-webkit-file-upload-button, */ input[type=file]+label {
 
 
 
@@ -156,7 +156,7 @@ x::-webkit-file-upload-button, input[type=file]+label {
     box-sizing: border-box;
     
     }
-x::-webkit-file-upload-button, input[type=file]+label:hover {
+/* x::-webkit-file-upload-button,*/  input[type=file]+label:hover {
      border: 2px solid #0a5bb7;
      color: #0a5bb7;
 }
