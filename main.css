@@ -35,12 +35,7 @@ width: 100%;
    border: 1px solid #CCC ;
      border-radius: 4px;
 }
-/*.togglegroup input:checked+span::after {
- content: ")";
-}
-.togglegroup input:checked+span::before {
- content: "(";
-}*/
+
 .togglegroup input:checked+span {
    border: 1px solid transparent ;
 
@@ -68,6 +63,7 @@ width: 100%;
 }
 #canvas {
     border: 5px transparent solid;
+    max-width: 100%;
 }
 #canvas.proc{
     border: 5px indianred solid;
