@@ -90,7 +90,6 @@ jQuery(function ($) {
         var jpegize_inner = function () {
             //4. draw the original image on the canvas
             ctx.drawImage(img, 0, 0);
-            console.log(i);
             if (i > 0) {
                 $('#statustext').html('<i class="em em-sparkles"></i>&nbsp; JPEGing - ' + (n - i) + '/' + n);
                 i--;
@@ -163,7 +162,7 @@ jQuery(function ($) {
                         // if it's an image add it to the image field
                         if (type.indexOf("image") != -1) {
  
-                            // get the image content and create an img dom element
+                            // get the image content and process it
                             var blob = clipboardItem.getAsFile();
                             var blobUrl = window.webkitURL.createObjectURL(blob);
                             processLoadedImg(blobUrl);
