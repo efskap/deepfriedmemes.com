@@ -89,6 +89,8 @@ jQuery(function ($) {
         var run = 0;
         var jpegize_inner = function () {
             //4. draw the original image on the canvas
+            ctx.drawImage(img, 0, -1); // black line fix... i'm at my wits' end
+            ctx.drawImage(img, 0, +1);
             ctx.drawImage(img, 0, 0);
             if (i > 0) {
                 $('#statustext').html('<i class="em em-sparkles"></i>&nbsp; JPEGing - ' + (n - i) + '/' + n);
