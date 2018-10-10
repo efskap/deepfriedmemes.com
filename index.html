@@ -38,7 +38,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
         <div class="container" style="padding: 2em;">
             <div class="row">
-                <div class="column">
+                <div class="column" >
                     <ul class="community-links">
                         <li>
                             <a class="tooltip tooltip-bottom" data-tooltip="Deep Fried Memes are a style of meme wherein an image is run through dozens of filters to the point where the image appears grainy, washed-out, and strangely colored.    -- Know Your Meme"
@@ -48,17 +48,17 @@
                 </div>
             </div>
 
-            <h3 id="title"><i class="em em-joy"></i> Meme Deep Fryer <i class="em em-ok_hand"></i></h3>
+            <h3 id="title"><i class="em em-joy"></i>&nbsp;&nbsp;Meme Deep Fryer <i class="em em-ok_hand"></i></h3>
 
             <div class="row">
                 <input class="" type="file" id="imageLoader" name="imageLoader" />
                 <label for="imageLoader">Browse</label>
             </div>
             <div class="row">
-                <div class="column">
+                <div class="five columns">
 
                     <div id="Filters" class="noselect">
-
+                        <div class="collapsible-pane" data-label="Filters">
                         <div class="Filter slider">
                             <span>brightness (<span class="FilterValue"></span>) </span>
 
@@ -95,7 +95,8 @@
 
                             </div>
                         </div>
-
+                        </div>
+                        <div class="collapsible-pane" data-label="jpeg">
                         <div class="togglegroup">
                             <span>jpeg</span>
                             <label><input id="jpeg-before" type="checkbox"/><span>before</span></label>
@@ -119,20 +120,53 @@
                                 </div>
                             </div>
                         </div>
+                        </div>
+
+                        <div class="collapsible-pane" data-label="bulge">
+                            <div class="togglegroup">
+                            <label><input id="unlock-bulges" type="checkbox"/><span>Enable</span></label>
+                            <span>the buggy bulge tool?</span>
+                            <div id="bulge_opts">
+                                <p>Click the canvas to add/remove draggable nubs. Work in progress.</p>
+                                   <div class="slider">
+                                <span>Global strength (<span class="FilterValue global-str-val"></span>) </span>
+
+                                <div class="setting">
+                                    <input id="global-str" type="range" min="-1" max="1" step="0.05" value="0.7">
+                                </div>
+                                </div>
+                                    <div class="slider">
+                                <span>Global radius (<span class="FilterValue global-radius-val"></span>) </span>
+
+                                <div class="setting">
+                                    <input id="global-radius" type="range" min="0" max="1" step="0.05" value="0.2">
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                        
+                            </div>
                     </div>
 
                 </div>
 
+                <div class="seven columns">
+                
+            <div class="row">
+
+                <div id="canvas-container">
+                        <div id="nubs"></div>
+                    <canvas id="canvas"> </canvas>
+                    </div>
             </div>
             <div class="row">
+            <a class="button noselect" id="dl-btn">Save Image</a>
+            </div>
+                    </div>
+            </div>
+                 <div class="row">
                 <span id="statustext" class="noselect"></span>
             </div>
-            <div class="row">
-                <div class="column">
-                    <canvas id="canvas"></canvas>
-                </div>
-            </div>
-            <a class="button noselect" id="dl-btn">Save Image</a>
         </div>
     </div>
 
@@ -143,7 +177,9 @@
     <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/camanjs/4.1.2/caman.full.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.slim.min.js"></script>
+    <script src="http://evanw.github.io/glfx.js/glfx.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script src="main.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.0/rangeslider.min.css" />

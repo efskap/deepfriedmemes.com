@@ -14,7 +14,58 @@ jQuery(function ($) {
     var canvas = $('#canvas')[0];
     var ctx = canvas.getContext('2d');
     var cam;
-
+    var nubs = [];
+    function addNub(x, y) {
+        var elem = $('<div class="nub"></div>')
+        var nub = {"x":x, "y":y, "elem": elem, "str":6, "radius":   canvas.offsetWidth/3};
+        $(elem).draggable({
+            drag: (event, ui) => {
+                
+                var offset = $(event.target.parentNode).offset();
+            
+                nub.x = (ui.offset.left - offset.left)  / canvas.offsetWidth * canvas.width - 1;
+                nub.y = (ui.offset.top - offset.top )  / canvas.offsetHeight * canvas.height - 2;
+                ctx.drawImage(original_img,0,0);
+                bulge();
+            },
+          stop: function(event, ui) {
+        // event.toElement is the element that was responsible
+        // for triggering this event. The handle, in case of a draggable.
+        $( event.originalEvent.target ).one('click', function(e){ e.stopImmediatePropagation(); } );
+        rerender();
+    },
+            containment: canvas});
+        $(elem).click((event, ui)=>{
+            nubs = $.grep(nubs, function(value) {
+                return value.elem !== elem;
+            });
+            $(elem).remove();
+            rerender();
+        });
+        nubs.push(nub);
+        $("#nubs").append(elem);
+        return elem[0];
+    }
+    $(canvas).click((event) => {
+          if (!$("#unlock-bulges").is(':checked'))
+            return;
+        var correction = 12;
+        var offset = $(event.target.parentNode).offset();
+        let x = event.offsetX   / canvas.offsetWidth * canvas.width;
+        let y = event.offsetY   / canvas.offsetHeight * canvas.height;
+        let elem = addNub(x + correction/2,y + correction/2);
+        elem.style.left =  (event.offsetX + correction) + 'px';
+        elem.style.top =  (event.offsetY + correction) + 'px';
+        rerender();
+    });
+    $(canvas.parentNode).on('mouseover', () => {
+        $("#nubs").show();
+    });
+  $(canvas.parentNode).on('mouseout', () => {
+        $("#nubs").hide();
+    });
+      
+    var original_img_url;
     var original_img;
     function processLoadedImg(src){
       var img = new Image();
@@ -23,7 +74,7 @@ jQuery(function ($) {
                 canvas.height = img.height;
                 canvas.removeAttribute("data-caman-id");
                 ctx.drawImage(img, 0, 0);
-                original_img = canvas.toDataURL();
+                original_img_url = canvas.toDataURL();
                 $('#Filters').show();
                 $(".slider input").each(function () {
 
@@ -37,6 +88,7 @@ jQuery(function ($) {
                
             };
             img.src = src;
+            original_img=img;
     }
           
     function loadImage(e) {
@@ -52,11 +104,27 @@ jQuery(function ($) {
     imageLoader.on('change', loadImage);
 
     var b = {};
+      function bulge() {
+          if (!$("#unlock-bulges").is(':checked'))
+            return;
+          var str = parseFloat( $("#global-str").val());
+          var radius = parseFloat($("#global-radius").val()) * (canvas.offsetWidth + canvas.offsetHeight) /2 ;
+              var cvs = fx.canvas();
+            var texture = cvs.texture(canvas);
+            var x =cvs.draw(texture);
+            for (const nub of nubs) {
+                x = x.bulgePinch(nub.x -4 , nub.y -4, radius, str);
+            }
+            x.update();
+            ctx.drawImage(cvs, 0,0);
+        }
+
     var apply_filters = function (callback) {
         $('#statustext')
             .html('<i class="em em-art"></i>&nbsp; applying filters')
             .promise()
             .done(function () {
+                bulge();
                 cam.reloadCanvasData();
                 $.each(b, function (j, i) {
                     var k = b[j];
@@ -72,6 +140,13 @@ jQuery(function ($) {
     var rerender = function (revert) {
         $('#canvas').toggleClass('proc', true);
         $('#dl-btn').css({'visibility': 'hidden'});
+
+        if($("#unlock-bulges").is(':checked')){
+            $('#bulge_opts').show();
+        }
+        else
+            $('#bulge_opts').hide();
+
         if ( ! ($('#jpeg-before').is(':checked') || $('#jpeg-after').is(':checked'))){
             $('#jpeg_opts').hide();
         }
@@ -87,6 +162,8 @@ jQuery(function ($) {
             .toggleClass('faded', jpeg_times === 0);
         var img = new Image();
         var run = 0;
+
+     
         var jpegize_inner = function () {
             //4. draw the original image on the canvas
             ctx.drawImage(img, 0, -1); // black line fix... i'm at my wits' end
@@ -125,7 +202,7 @@ jQuery(function ($) {
         };
         img.onload = jpegize;
         // 1. image is set to load
-        img.src = original_img;
+        img.src = original_img_url;
 
     };
     $(".FilterSetting input").each(function () {
