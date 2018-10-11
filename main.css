@@ -109,7 +109,7 @@ position: absolute; width: 0; height: 0;
     -webkit-text-stroke: 2px black;
     font-size: 36pt;
     color: #fff;
-    font-family: impact, sans-serif;
+    font-family: Impact,Haettenschweiler,Franklin Gothic Bold,Charcoal,Helvetica Inserat,Bitstream Vera Sans Bold,Arial Black,sans serif; 
 }
 #subtitle{
     color:#CCD;
@@ -118,7 +118,7 @@ position: absolute; width: 0; height: 0;
 image-rendering: initial;
       text-align: center;
           font-weight: bold;
-    font-size: 15pt;
+    font-size: 12pt;
 }
 
 .collapsible-pane {
@@ -148,7 +148,7 @@ a:hover{
          color: #0a5bb7;
 }
 body{
-    font-family: "Cabin",  "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Spinnaker",  "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 input[type=file] {
