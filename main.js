@@ -46,6 +46,12 @@ jQuery(function ($) {
         $("#nubs").append(elem);
         return elem[0];
     }
+    function clearNubs(){
+        for (const nub of nubs) {
+            $(nub.elem).remove();
+        }
+        nubs = [];
+    }
     $(canvas).click((event) => {
           if (!$("#unlock-bulges").is(':checked'))
             return;
@@ -58,16 +64,22 @@ jQuery(function ($) {
         elem.style.top =  (event.offsetY + correction) + 'px';
         rerender();
     });
-    $(canvas.parentNode).on('mouseover', () => {
+    let showNubs = () => {
         $("#nubs").show();
-    });
-  $(canvas.parentNode).on('mouseout', () => {
+    };
+    let hideNubs = () => {
         $("#nubs").hide();
-    });
+    };
+    
+    $("body").on('touchmove', hideNubs);
+    $(canvas.parentNode).on('mouseout', hideNubs);
+    $(canvas.parentNode).on('mouseover',showNubs);
+    $(canvas.parentNode).on('touchmove',(e)=>{e.stopImmediatePropagation(); showNubs();});
       
     var original_img_url;
     var original_img;
     function processLoadedImg(src){
+        clearNubs();
       var img = new Image();
             img.onload = function () {
                 canvas.width = img.width;
@@ -172,7 +184,7 @@ jQuery(function ($) {
             if (i > 0) {
                 $('#statustext').html('<i class="em em-sparkles"></i>&nbsp; JPEGing - ' + (n - i) + '/' + n);
                 i--;
-                img.src = canvas.toDataURL("image/jpeg", Math.max(0, jpeg_quality + Math.sin(i) * 0.05 - 0.025));
+                img.src = canvas.toDataURL("image/jpeg", Math.max(0, jpeg_quality + Math.random() * 0.025));
             } else {
                 if (run == 0) // done jpeging first time, time to do filters
                     apply_filters(function () {

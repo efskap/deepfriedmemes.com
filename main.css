@@ -82,6 +82,11 @@ div#bulge_opts {
   font-size: 11pt;
   padding: 0 1em;
 }
+
+.em {
+  filter: drop-shadow(1px 1px 0 #0009) drop-shadow(-1px -1px #0009) drop-shadow(-1px 1px 0 #0009) drop-shadow(1px -1px #0009);
+}
+
 .nub{
      position: relative;
     width: 12px;
