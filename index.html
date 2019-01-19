@@ -12,24 +12,26 @@
     <meta name="author" content="https://dmitry.lol">
 
     <!-- Mobile Specific Metas
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- FONT
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <link href="//fonts.googleapis.com/css?family=Spinnaker:400,700" rel="stylesheet" type="text/css">
 
     <!-- CSS
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <link rel="stylesheet" href="vendor/normalize.css">
     <link rel="stylesheet" href="vendor/skeleton.css">
     <link rel="stylesheet" href="main.css">
     <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
     <!--<script src="https://use.fontawesome.com/0bc71bd5fc.js"></script>-->
     <!-- Favicon
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <link rel="icon" type="image/png" href="images/favicon.png">
 
+    <!-- Progressive WebApp Support -->
+    <link rel="manifest" href="/manifest.json" />
 </head>
 
 <body>
@@ -195,7 +197,16 @@
   ga('send', 'pageview');
 
     </script>
-    
+    <!-- Progressive WebApp Support -->
+    <script>
+     if (navigator.serviceWorker.controller) {
+         console.log("Active service worker found, no need to register");
+     } else {
+         navigator.serviceWorker.register("/sw.js").then(function(reg) {
+             console.log("Service worker has been registered for scope: " + reg.scope);
+         });
+     }
+    </script>
 </body>
 
 </html>
