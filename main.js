@@ -8,7 +8,7 @@ jQuery(function ($) {
     
     $('#dl-btn')
         .on('click', function () {
-            downloadCanvas(this, 'canvas', 'deepfried_' + Math.floor(Date.now()) + '.png');
+            downloadCanvas('canvas', 'deepfried_' + Math.floor(Date.now()) + '.png');
         });
     var imageLoader = $('#imageLoader');
     var canvas = $('#canvas')[0];
@@ -265,12 +265,21 @@ jQuery(function ($) {
                 }
 });
 
-// https://jsfiddle.net/AbdiasSoftware/7PRNN/
-function downloadCanvas(link, canvasId, filename) {
-    link.href = document
+// https://stackoverflow.com/a/37151835
+function downloadCanvas(canvasId, filename) {
+    document
         .getElementById(canvasId)
-        .toDataURL();
-    link.download = filename;
+        .toBlob((blob) => {
+            var a = document.createElement('a');
+            a.style.display = 'none';
+            document.body.appendChild(a);
+            a.href = URL.createObjectURL(blob);
+            a.download = filename;
+            a.click();
+            URL.revokeObjectURL(a.href);
+            a.href = "";
+            document.body.removeChild(a);
+        });
 }
 
 /* Readme file has additional notes */
