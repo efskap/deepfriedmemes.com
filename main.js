@@ -31,7 +31,13 @@ jQuery(function ($) {
     
     $('#dl-btn')
         .on('click', function () {
-            downloadCanvas('canvas', 'deepfried_' + Math.floor(Date.now()) + '.png');
+	    // Safari doesn't support blob... whY?
+	    if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
+		downloadCanvasWithoutBlob(this, 'canvas', 'deepfried_' + Math.floor(Date.now()) + '.png');
+
+	    } else {
+            	downloadCanvas('canvas', 'deepfried_' + Math.floor(Date.now()) + '.png');
+	    }
         });
     var imageLoader = $('#imageLoader');
     var canvas = $('#canvas')[0];
@@ -303,6 +309,14 @@ function downloadCanvas(canvasId, filename) {
             a.href = "";
             document.body.removeChild(a);
         });
+}
+
+// https://jsfiddle.net/AbdiasSoftware/7PRNN/
+function downloadCanvasWithoutBlob(link, canvasId, filename) {
+    link.href = document
+        .getElementById(canvasId)
+        .toDataURL();
+    link.download = filename;
 }
 
 /* Readme file has additional notes */
