@@ -284,7 +284,7 @@ jQuery(function ($) {
  
                             // get the image content and process it
                             var blob = clipboardItem.getAsFile();
-                            var blobUrl = window.webkitURL.createObjectURL(blob);
+                            var blobUrl = (window.webkitURL || window.URL).createObjectURL(blob);
                             processLoadedImg(blobUrl);
                         } else {
                             console.log("Not supported: " + type);
