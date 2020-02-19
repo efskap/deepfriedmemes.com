@@ -47,12 +47,9 @@ jQuery(function($) {
     $('#randomMeme').on('click', function() {
         // Then, as tears of bubbling pitch stream down my face, my dark world will begin.
         // I will open one of my six mouths, and I will sing the song that ends the Earth.
-        let originalText = this.textContent;
         this.textContent = "fetching...";
         this.disabled = true;
-        fetch('https://cors-anywhere.herokuapp.com/https://reddit.com/r/GoCommitDie+MinecraftMemes+Memes_Of_The_Dank+meme+memes+dankmemes+pewdiepiesubmissions/random.json')
-            .then(x => x.json())
-            .then(j => loadImageFromUrl('https://cors-anywhere.herokuapp.com/' + j[0].data.children[0].data.url))
+        processLoadedImg('https://zoomer-food.efskap.workers.dev/' + Math.floor(1000*Math.random()))
             .then(x=>{this.textContent="Random Meme"; this.disabled=false;})
             .catch(err => {this.textContent="error, retry?"; this.disabled=false;})
 
@@ -142,32 +139,38 @@ jQuery(function($) {
     var original_img;
 
     function processLoadedImg(src) {
-        clearNubs();
-        var img = new Image();
-        img.onload = function() {
-            canvas.width = img.width;
-            canvas.height = img.height;
-            canvas.removeAttribute("data-caman-id");
-            ctx.drawImage(img, 0, 0);
-            original_img_url = canvas.toDataURL();
-            $('#Filters').show();
-            $(".slider input").each(function() {
+        return new Promise((resolve, reject) => {
+                clearNubs();
+                var img = new Image();
+                img.crossOrigin = 'anonymous';
+                img.onerror = reject;
+                img.onload = function() {
+                    resolve();
+                    let ratio = img.width/img.height;
 
-                $(this)
-                    .parent()
-                    .parent()
-                    .find(".FilterValue")
-                    .html($(this).val());
+                    canvas.width = Math.min(800, img.width);
+                    canvas.height = canvas.width / ratio;
+                    canvas.removeAttribute("data-caman-id");
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    original_img_url = canvas.toDataURL();
+                    $('#Filters').show();
+                    $(".slider input").each(function() {
+
+                        $(this)
+                            .parent()
+                            .parent()
+                            .find(".FilterValue")
+                            .html($(this).val());
+                    });
+                    cam = Caman(canvas, function() {
+                        rerender(true)
+                    });
+
+                };
+                img.src = src;
+                original_img = img;
             });
-            cam = Caman(canvas, function() {
-                rerender(true)
-            });
-
-        };
-        img.src = src;
-        original_img = img;
-    }
-
+        }
     function loadImage(e) {
         var reader = new FileReader();
         reader.onload = function(event) {
@@ -177,17 +180,7 @@ jQuery(function($) {
         if (e.target.files.length)
             reader.readAsDataURL(imageLoader[0].files[0]);
     }
-     function loadImageFromUrl(url) {
-        let reader = new FileReader();
-        return fetch(url)
-            .then(response => response.blob())
-            .then(blob => new Promise((resolve, reject) => {
-                reader.readAsDataURL(blob)
-                reader.onload = resolve;
-                reader.onerror = reject;
-            }))
-            .then(x=>processLoadedImg(x.target.result));
-    }
+
 
 
     imageLoader.on('change', loadImage);
@@ -256,9 +249,12 @@ jQuery(function($) {
 
         var jpegize_inner = function() {
             //4. draw the original image on the canvas
-            ctx.drawImage(img, 0, -1); // black line fix... i'm at my wits' end
-            ctx.drawImage(img, 0, +1);
-            ctx.drawImage(img, 0, 0);
+
+            ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width, img.height);
+            ctx.drawImage(img, 0, 0, img.width, 2, 0, -1, img.width, 2);
+            ctx.drawImage(img, 0, img.height-2, img.width, 1, 0, img.height-1, img.width, 1); 
+
+
             if (i > 0) {
                 $('#statustext').html('<i class="em em-sparkles"></i>&nbsp; JPEGing - ' + (n - i) + '/' + n);
                 i--;
@@ -271,7 +267,7 @@ jQuery(function($) {
                 });
                 else {
                     // done jpeging second time
-                    $('#statustext').html('<i class="em em-ok_hand"></i>');
+                    $('#statustext').html('<i class="em em-ok_hand"></i><br/>Now go post it on r/deepfriedmemes!');
                     $('#canvas').toggleClass('proc', false);
                     $('#dl-btn').css({
                         'visibility': 'visible'
