@@ -1,3 +1,5 @@
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fefskap%2Fdeepfriedmemes.com.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fefskap%2Fdeepfriedmemes.com?ref=badge_shield)
+
 Deep fries your pics. Serve with laundry sauce.
 
 live @ http://deepfriedmemes.com
@@ -10,3 +12,7 @@ tl;dr on how it works:
   
 I'm probably not going to add ~~bulging~~ (nvm) / emojis because it seems kinda out of scope. But if you know a clean / fast way to do it, submit a PR :D
 
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fefskap%2Fdeepfriedmemes.com.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fefskap%2Fdeepfriedmemes.com?ref=badge_large)
