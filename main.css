@@ -5,7 +5,6 @@ body{
     background: url("images/noise.png");
     background-size: 167px 133px;
     image-rendering: pixelated;
-    
     color: #333;
 }
 #dl-btn{
@@ -149,9 +148,23 @@ a{
         text-decoration: none;
 }
 a:hover{
-        
          color: #0a5bb7;
 }
+
+/* spinnaker-regular - latin */
+@font-face {
+  font-family: 'Spinnaker';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/spinnaker-v11-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Spinnaker'), local('Spinnaker-Regular'),
+       url('/fonts/spinnaker-v11-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/fonts/spinnaker-v11-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('/fonts/spinnaker-v11-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('/fonts/spinnaker-v11-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('/fonts/spinnaker-v11-latin-regular.svg#Spinnaker') format('svg'); /* Legacy iOS */
+}
+
 body{
     font-family: "Spinnaker",  "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
