@@ -37,11 +37,10 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
         <div class="container" style="padding: 2em;">
             <div class="row">
-                <div class="column" >
+                <div class="column">
                     <ul class="community-links">
                         <li>
-                            <a class="tooltip tooltip-bottom" data-tooltip="Deep Fried Memes are a style of meme wherein an image is run through dozens of filters to the point where the image appears grainy, washed-out, and strangely colored.    -- Know Your Meme"
-                                href="#">What is this?</a>
+                            <a class="tooltip tooltip-bottom" data-tooltip="Deep Fried Memes are a style of meme wherein an image is run through dozens of filters to the point where the image appears grainy, washed-out, and strangely colored. --Know Your Meme" href="#">What is this?</a>
                         </li>
                     </ul>
                 </div>
@@ -52,7 +51,7 @@
             <div class="row">
                 <input class="" type="file" id="imageLoader" name="imageLoader" />
                 <label for="imageLoader">Browse</label>
-                <br/>
+                <br />
                 <button class="" id="randomMeme" name="randomMeme">Random Meme</button>
             </div>
             <div class="row">
@@ -60,119 +59,150 @@
 
                     <div id="Filters" class="noselect">
                         <div class="collapsible-pane" data-label="Filters">
-                        <div class="Filter slider">
-                            <span>brightness (<span class="FilterValue"></span>) </span>
+                            <div class="Filter slider">
+                                <span>brightness (<span class="FilterValue"></span>) </span>
 
-                            <div class="FilterSetting">
-                                <input type="range" min="-10" max="30" step="1" value="15" data-filter="brightness">
+                                <div class="FilterSetting">
+                                    <input type="range" min="-10" max="30" step="1" value="15" data-filter="brightness">
 
+                                </div>
                             </div>
-                        </div>
-                        <div class="Filter slider">
-                            <span>contrast (<span class="FilterValue"></span>) </span>
-                            <div class="FilterSetting">
-                                <input type="range" min="0" max="300" step="1" value="155" data-filter="contrast">
+                            <div class="Filter slider">
+                                <span>contrast (<span class="FilterValue"></span>) </span>
+                                <div class="FilterSetting">
+                                    <input type="range" min="0" max="300" step="1" value="155" data-filter="contrast">
 
+                                </div>
                             </div>
-                        </div>
-                        <div class="Filter slider">
-                            <span>sharpen (<span class="FilterValue"></span>) </span>
-                            <div class="FilterSetting">
-                                <input type="range" min="0" max="800" step="1" value="83" data-filter="sharpen">
+                            <div class="Filter slider">
+                                <span>sharpen (<span class="FilterValue"></span>) </span>
+                                <div class="FilterSetting">
+                                    <input type="range" min="0" max="800" step="1" value="83" data-filter="sharpen">
 
+                                </div>
                             </div>
-                        </div>
-                        <div class="Filter slider">
-                            <span>saturation (<span class="FilterValue"></span>) </span>
-                            <div class="FilterSetting">
-                                <input type="range" min="0" max="300" step="1" value="0" data-filter="saturation">
+                            <div class="Filter slider">
+                                <span>saturation (<span class="FilterValue"></span>) </span>
+                                <div class="FilterSetting">
+                                    <input type="range" min="0" max="300" step="1" value="0" data-filter="saturation">
 
+                                </div>
                             </div>
-                        </div>
-                        <div class="Filter slider">
-                            <span>noise (<span class="FilterValue"></span>) </span>
-                            <div class="FilterSetting">
-                                <input type="range" min="0" max="100" step="1" value="18" data-filter="noise">
+                            <div class="Filter slider">
+                                <span>noise (<span class="FilterValue"></span>) </span>
+                                <div class="FilterSetting">
+                                    <input type="range" min="0" max="100" step="1" value="18" data-filter="noise">
 
+                                </div>
                             </div>
-                        </div>
                         </div>
                         <div class="collapsible-pane" data-label="jpeg">
-                        <div class="togglegroup">
-                            <span>jpeg</span>
-                            <label><input id="jpeg-before" type="checkbox"/><span>before</span></label>
-                            <label><input id="jpeg-after" type="checkbox" checked/><span>after</span></label>
-                            <span>filters</span>
-                        </div>
-                        <div id="jpeg_opts">
-                            <div class="slider">
-                                <span>jpeg repetitions (<span class="FilterValue jpeg-val"></span>) </span>
+                            <div class="togglegroup">
+                                <span>jpeg</span>
+                                <label><input id="jpeg-before" type="checkbox" /><span>before</span></label>
+                                <label><input id="jpeg-after" type="checkbox" checked /><span>after</span></label>
+                                <span>filters</span>
+                            </div>
+                            <div id="jpeg_opts">
+                                <div class="slider">
+                                    <span>jpeg repetitions (<span class="FilterValue jpeg-val"></span>) </span>
 
-                                <div class="setting">
-                                    <input id="jpeg_times" type="range" min="1" max="200" step="1" value="28">
+                                    <div class="setting">
+                                        <input id="jpeg_times" type="range" min="1" max="200" step="1" value="28">
 
+                                    </div>
+                                </div>
+                                <div class="slider">
+                                    <span>jpeg quality (<span class="FilterValue jpeg-val"></span>) </span>
+
+                                    <div class="setting">
+                                        <input id="jpeg_quality" type="range" min="0" max="0.5" step="0.025" value="0.175">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="slider">
-                                <span>jpeg quality (<span class="FilterValue jpeg-val"></span>) </span>
-
-                                <div class="setting">
-                                    <input id="jpeg_quality" type="range" min="0" max="0.5" step="0.025" value="0.175">
-                                </div>
-                            </div>
-                        </div>
                         </div>
 
                         <div class="collapsible-pane" data-label="bulge">
                             <div class="togglegroup">
-                            <label><input id="unlock-bulges" type="checkbox"/><span>Enable</span></label>
-                            <span>the buggy bulge tool?</span>
-                            <div id="bulge_opts">
-                                <p>Click the canvas to add/remove draggable nubs. Work in progress.</p>
-                                   <div class="slider">
-                                <span>Global strength (<span class="FilterValue global-str-val"></span>) </span>
-
-                                <div class="setting">
-                                    <input id="global-str" type="range" min="-1" max="1" step="0.05" value="0.7">
-                                </div>
-                                </div>
+                                <label><input id="unlock-bulges" type="checkbox" /><span>Enable</span></label>
+                                <span>the buggy bulge tool?</span>
+                                <div id="bulge_opts">
+                                    <p>Click the canvas to add/remove draggable nubs. Work in progress.</p>
                                     <div class="slider">
-                                <span>Global radius (<span class="FilterValue global-radius-val"></span>) </span>
+                                        <span>Global strength (<span class="FilterValue global-str-val"></span>) </span>
 
-                                <div class="setting">
-                                    <input id="global-radius" type="range" min="0" max="1" step="0.05" value="0.2">
+                                        <div class="setting">
+                                            <input id="global-str" type="range" min="-1" max="1" step="0.05" value="0.7">
+                                        </div>
+                                    </div>
+                                    <div class="slider">
+                                        <span>Global radius (<span class="FilterValue global-radius-val"></span>)
+                                        </span>
+
+                                        <div class="setting">
+                                            <input id="global-radius" type="range" min="0" max="1" step="0.05" value="0.2">
+                                        </div>
+                                    </div>
                                 </div>
-                                </div>
                             </div>
-                            </div>
-                        
-                            </div>
+                        </div>
                     </div>
 
                 </div>
 
                 <div class="seven columns">
-                
-            <div class="row">
 
-                <div id="canvas-container">
-                        <div id="nubs"></div>
-                    <canvas id="canvas"> </canvas>
+                    <div class="row">
+
+                        <div id="canvas-container">
+                            <div id="nubs"></div>
+                            <canvas id="canvas"> </canvas>
+                        </div>
                     </div>
+                    <div class="row">
+                        <a class="button noselect" id="dl-btn">Save Image</a>
+                    </div>
+                </div>
             </div>
             <div class="row">
-            <a class="button noselect" id="dl-btn">Save Image</a>
-            </div>
-                    </div>
-            </div>
-                 <div class="row">
                 <span id="statustext" class="noselect"></span>
             </div>
         </div>
     </div>
 
-   <div id="footer">
+    <div id="privacy" class="modal">
+        <h3>DeepFriedMemes.com privacy policy</h3>
+        <h4>Data collected</h4>
+        <p>
+            DeepFriedMemes.com does not set or use any cookies.
+            <p>
+                DeepFriedMemes.com uses third party trackers (GoatCounter), but does not permanently retain any user data on its servers.
+                <br/>Due to the very nature of the HTTP protocol, its servers have temporary knowledge of some user data, including but not limited to: IP address, browser type (user agent) and more.
+                <br/>This data is not permanently stored by DeepFriedMemes.com and is only used temporarily during a user's visit.
+                <br/>This temporary data is not used for any other purposes nor shared with third parties.
+            </p>
+            <h4>GoatCounter</h4>
+            <p>
+                DeepFriedMemes.com embeds a script by Goatcounter.com to track website usage. This information is publically accessible at <a href="https://dfm.goatcounter.com">https://dfm.goatcounter.com</a>.
+            </p>
+            <p>Goatcounter.com claims that no personal information (such as IP address) is permanently stored by them.<br/>Learn more at <a href="https://www.goatcounter.com/privacy">https://www.goatcounter.com/privacy</a>
+            </p>
+            <h4>Advertising</h4>
+            <p>
+                Ads appearing on our website may be delivered to users by advertising partners, who may set cookies. These cookies allow the ad server to recognize your computer each time they send you an online advertisement to compile non personal identification information
+                about you or others who use your computer. This information allows ad networks to, among other things, deliver targeted advertisements that they believe will be of most interest to you. This privacy policy does not cover the use of cookies
+                by any advertisers.
+            </p>
+            <h4> Owner and data controller</h4>
+            <p>Please contact <a href="mailto:dfm@dmitry.lol">dfm@dmitry.lol</a> for any inquiry.
+            </p>
+    </div>
+
+    <div id="footer">
         <span style="float: left;">Built by <a href="https://dmitry.lol">Dmitry</a>.</span>
+
+        <span><a href="#privacy" rel="modal:open">Privacy Policy</a></span> |
+
         <span><a href="https://github.com/efskap/deepfriedmemes.com">View on GitHub</a></span>
     </div>
     <!-- End Document
@@ -185,19 +215,25 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.0/rangeslider.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.0/rangeslider.min.js"></script>
+
+
+    <!-- jQuery Modal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
     <!-- Progressive WebApp Support -->
     <script>
-     if (navigator.serviceWorker.controller) {
-         console.log("Active service worker found, no need to register");
-     } else {
-         navigator.serviceWorker.register("/sw.js").then(function(reg) {
-             console.log("Service worker has been registered for scope: " + reg.scope);
-         });
-     }
+        if (navigator.serviceWorker.controller) {
+            console.log("Active service worker found, no need to register");
+        } else {
+            navigator.serviceWorker.register("/sw.js").then(function(reg) {
+                console.log("Service worker has been registered for scope: " + reg.scope);
+            });
+        }
     </script>
 
     <!--analytics (though rather privacy friendly dw) -->
-    <script data-goatcounter="https://dfm.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
+    <script data-goatcounter="https://dfm.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
+
 </html>

@@ -38,10 +38,10 @@ jQuery(function($) {
             // Safari doesn't support blob... whY?
             if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
                 downloadCanvasWithoutBlob(this, 'canvas', 'deepfried_' + Math.floor(Date.now()) + '.png');
-
             } else {
                 downloadCanvas('canvas', 'deepfried_' + Math.floor(Date.now()) + '.png');
             }
+            hasUnsavedData = false;
         });
 
     $('#randomMeme').on('click', function() {
@@ -60,6 +60,9 @@ jQuery(function($) {
     var ctx = canvas.getContext('2d');
     var cam;
     var nubs = [];
+
+    let hasUnsavedData = false;
+
 
     function addNub(x, y) {
         var elem = $('<div class="nub"></div>')
@@ -221,6 +224,7 @@ jQuery(function($) {
 
     };
     var rerender = function(revert) {
+        hasUnsavedData = true;
         $('#canvas').toggleClass('proc', true);
         $('#dl-btn').css({
             'visibility': 'hidden'
@@ -341,6 +345,8 @@ jQuery(function($) {
     }
 });
 
+
+
 // https://stackoverflow.com/a/37151835
 function downloadCanvas(canvasId, filename) {
     document
@@ -407,25 +413,17 @@ function downloadCanvasWithoutBlob(link, canvasId, filename) {
                 // Check for event.clipboardData support
                 if (e.clipboardData.items) { // Chrome
                     // Get the items from the clipboard
-                    var items = e.clipboardData.items;
-                    if (items) {
-                        // Search clipboard items for an image
-                        for (var i = 0; i < items.length; i++) { // removed: i < items.length, items[i].type.indexOf("image") !== -1
-                            if (items[i].type.indexOf("image") !== -1) {
-                                //foundImage = true; Not sure why this was here								
-                                // Convert image to blob using File API	               
-                                var blob = items[i].getAsFile();
-                                var reader = new FileReader();
-                                reader.onload = function(event) {
-                                    callback(event.target.result); //event.target.results contains the base64 code to create the image
-                                };
-                                /* Convert the blob from clipboard to base64 */
-                                reader.readAsDataURL(blob);
-                                //foundImage = false; Not sure why this was here
-                            }
-                        }
+                    const item = e.clipboardData.items.find(item => item.type.indexOf("image") !== -1);
+                    if (item) {
+                        const blob = item.getAsFile();
+                        const reader = new FileReader();
+                        reader.onload = function (event) {
+                            callback(event.target.result); //event.target.results contains the base64 code to create the image
+                        };
+                        /* Convert the blob from clipboard to base64 */
+                        reader.readAsDataURL(blob);
                     } else {
-                        alert("Nothing found in the clipboard!"); // possibly e.clipboardData undersupported
+                        alert("No image found in the clipboard!");
                     }
                 } else {
                     /* If we can't handle clipboard data directly (Firefox), we need to read what was pasted from the contenteditable element */
