@@ -1,30 +1,5 @@
 'use strict';
 
-// canvas.toBlob polyfill for safari
-// https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toBlob#Polyfill
-if (!HTMLCanvasElement.prototype.toBlob) {
-    Object.defineProperty(HTMLCanvasElement.prototype, 'toBlob', {
-        value: function(callback, type, quality) {
-            var dataURL = this.toDataURL(type, quality).split(',')[1];
-            setTimeout(function() {
-
-                var binStr = atob(dataURL),
-                    len = binStr.length,
-                    arr = new Uint8Array(len);
-
-                for (var i = 0; i < len; i++) {
-                    arr[i] = binStr.charCodeAt(i);
-                }
-
-                callback(new Blob([arr], {
-                    type: type || 'image/png'
-                }));
-
-            });
-        }
-    });
-}
-
 jQuery(function($) {
     if (!/Mobi/.test(navigator.userAgent)) {
         $('#imageLoader+label').text('Browse (or paste)');
@@ -35,12 +10,7 @@ jQuery(function($) {
 
     $('#dl-btn')
         .on('click', function() {
-            // Safari doesn't support blob... whY?
-            if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
-                downloadCanvasWithoutBlob(this, 'canvas', 'deepfried_' + Math.floor(Date.now()) + '.png');
-            } else {
-                downloadCanvas('canvas', 'deepfried_' + Math.floor(Date.now()) + '.png');
-            }
+            downloadCanvasB64(this, 'canvas', 'deepfried_' + Math.floor(Date.now()) + '.jpg');
             hasUnsavedData = false;
         });
 
@@ -52,7 +22,6 @@ jQuery(function($) {
         processLoadedImg('https://zoomer-food.efskap.workers.dev/' + Math.floor(1000*Math.random()))
             .then(x=>{this.textContent="Random Meme"; this.disabled=false;})
             .catch(err => {this.textContent="error, retry?"; this.disabled=false;})
-
     });
 
     var imageLoader = $('#imageLoader');
@@ -62,7 +31,6 @@ jQuery(function($) {
     var nubs = [];
 
     let hasUnsavedData = false;
-
 
     function addNub(x, y) {
         var elem = $('<div class="nub"></div>')
@@ -75,7 +43,6 @@ jQuery(function($) {
         };
         $(elem).draggable({
             drag: (event, ui) => {
-
                 var offset = $(event.target.parentNode).offset();
 
                 nub.x = (ui.offset.left - offset.left) / canvas.offsetWidth * canvas.width - 1;
@@ -155,7 +122,7 @@ jQuery(function($) {
                     canvas.height = canvas.width / ratio;
                     canvas.removeAttribute("data-caman-id");
                     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                    original_img_url = canvas.toDataURL();
+                    original_img_url = canvas.toDataURL('image/jpeg');
                     $('#Filters').show();
                     $(".slider input").each(function() {
 
@@ -288,7 +255,7 @@ jQuery(function($) {
                 i = 0;
             img.onload = jpegize_inner;
             if (run > 0)
-                img.src = canvas.toDataURL();
+                img.src = canvas.toDataURL('image/jpeg');
             else
                 jpegize_inner();
         };
@@ -347,28 +314,16 @@ jQuery(function($) {
 
 
 
-// https://stackoverflow.com/a/37151835
-function downloadCanvas(canvasId, filename) {
-    document
-        .getElementById(canvasId)
-        .toBlob((blob) => {
-            var a = document.createElement('a');
-            a.style.display = 'none';
-            document.body.appendChild(a);
-            a.href = URL.createObjectURL(blob);
-            a.download = filename;
-            a.click();
-            URL.revokeObjectURL(a.href);
-            a.href = "";
-            document.body.removeChild(a);
-        });
-}
-
 // https://jsfiddle.net/AbdiasSoftware/7PRNN/
-function downloadCanvasWithoutBlob(link, canvasId, filename) {
+function downloadCanvasB64(link, canvasId, filename) {
+    let jpeg_quality = 0.8;
+    if ($('#jpeg-after').is(':checked')) {
+        const parsed = parseFloat($('#jpeg_quality').val());
+        if (parsed) {jpeg_quality = parsed;}
+    }
     link.href = document
         .getElementById(canvasId)
-        .toDataURL();
+        .toDataURL('image/jpeg',jpeg_quality);
     link.download = filename;
 }
 

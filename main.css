@@ -214,6 +214,13 @@ input[type=file]::-webkit-file-upload-button {
     visibility: hidden;
 }
 
+.button, input[type=file]+label, button {
+    background-image: linear-gradient(#FFFA 0, #DDDA 100%);
+    color:black;
+}
+.button:active, input[type=file]+label:active, button:active {
+    background-image: linear-gradient(0deg, #FFFA 0, #DDDA 100%);
+}
 
 /* "x::-webkit-file-upload-button" forces the rules to only apply to browsers that support this pseudo-element */
 
