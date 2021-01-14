@@ -165,7 +165,12 @@ div#bulge_opts {
     display: inline;
     margin: 0.5em 1em;
 }
-
+.some-space {
+    padding-top: 2em;
+}
+.waldo > div {
+    display: inline-block;
+}
 a {
     color: var(--primary-col);
     text-decoration: none;
