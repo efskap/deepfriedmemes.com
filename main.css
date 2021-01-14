@@ -168,6 +168,9 @@ div#bulge_opts {
 .some-space {
     padding-top: 2em;
 }
+.waldo {
+    text-align: center;
+}
 .waldo > div {
     display: inline-block;
 }
@@ -296,11 +299,7 @@ a.noselect {
 }
 
 
-/*  
-Sticky Footer Solution
-by Steve Hatcher
-http://stever.ca http://www.cssstickyfooter.com
-*/
+
 
 html,
 body,
@@ -313,38 +312,24 @@ body>#wrapper {
     min-height: 100%;
 }
 
-
-/* must be same height as the footer */
-
-#content {
-    overflow: auto;
-    padding-bottom: 150px;
+#wrapper {
+    display:flex;
+    flex-direction: column;
 }
+.container {
+    flex: 1 0;
+}
+.waldo {
 
+}
 #footer {
-    position: relative;
-    margin-top: -1.7em;
-    height: 1.7em;
-    clear: both;
+
     font-weight: 800;
-    line-height: 1.7;
     padding: 0 0.7em;
     text-align: right;
     border-top: 1px solid #bbb;
 }
 
-
-/*Opera Fix*/
-
-body:before {
-    /* thanks to Maleika (Kohoutec)*/
-    content: "";
-    height: 100%;
-    float: left;
-    width: 0;
-    margin-top: -32767px;
-    /* thank you Erik J */
-}
 
 
 /**
