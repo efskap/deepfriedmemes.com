@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  deepfriedmemes:
+    container_name: deepfriedmemes
+    image: efskap/deepfriedmemes.com:latest
+    restart: unless-stopped
+    ports:
+      - 80:80
