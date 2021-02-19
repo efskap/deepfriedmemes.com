@@ -326,3 +326,6 @@ yahoo.com, 57289, RESELLER,  e1a5b5b6e3255540
 indexexchange.com, 191973, RESELLER, 50b1c356f2c5c8fc
 
 newormedia.com, 9774, DIRECT
+
+yahoo.com, 57289, RESELLER, e1a5b5b6e3255540
+rubiconproject.com, 17820, DIRECT, 0bfd66d529a55807
