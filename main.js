@@ -14,16 +14,6 @@ jQuery(function($) {
             hasUnsavedData = false;
         });
 
-    $('#randomMeme').on('click', function() {
-        // Then, as tears of bubbling pitch stream down my face, my dark world will begin.
-        // I will open one of my six mouths, and I will sing the song that ends the Earth.
-        this.textContent = "fetching...";
-        this.disabled = true;
-        processLoadedImg('https://zoomer-food.efskap.workers.dev/' + Math.floor(1000*Math.random()))
-            .then(x=>{this.textContent="Random Meme"; this.disabled=false;})
-            .catch(err => {this.textContent="error, retry?"; this.disabled=false;})
-    });
-
     var imageLoader = $('#imageLoader');
     var canvas = $('#canvas')[0];
     var ctx = canvas.getContext('2d');
