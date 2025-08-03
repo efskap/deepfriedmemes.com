@@ -164,7 +164,7 @@ jQuery(function($) {
 
     var apply_filters = function(callback) {
         $('#statustext')
-            .html('<i class="em em-art"></i>&nbsp; applying filters')
+            .html('🎨&nbsp; applying filters')
             .promise()
             .done(function() {
                 bulge();
@@ -217,7 +217,7 @@ jQuery(function($) {
 
 
             if (i > 0) {
-                $('#statustext').html('<i class="em em-sparkles"></i>&nbsp; JPEGing - ' + (n - i) + '/' + n);
+                $('#statustext').html('✨&nbsp; JPEGing - ' + (n - i) + '/' + n);
                 i--;
                 img.src = canvas.toDataURL("image/jpeg", Math.max(0, jpeg_quality + Math.random() * 0.025));
             } else {
@@ -228,7 +228,7 @@ jQuery(function($) {
                 });
                 else {
                     // done jpeging second time
-                    $('#statustext').html('<i class="em em-ok_hand"></i><br/>Now go post it on r/deepfriedmemes!');
+                $('#statustext').html('👌<br/>Done!');
                     $('#canvas').toggleClass('proc', false);
                     $('#dl-btn').css({
                         'visibility': 'visible'
